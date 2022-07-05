@@ -1,0 +1,18 @@
+$su
++sudo git fish
+$/sbin/adduser homelicat sudo
+$exit
+$chsh -s /usr/bin/fish
+$su
+$reboot
+
+#/etc/apt/sources.list "deb http://ftp.agh.edu.pl/debian/ buster main"
++xorg pulseaudio pavucontrol lightdm lightdm-gtk-greeter xfonts-terminus
++lxrandr lxappearance flameshot network-manager network-manager-gnome feh 
++pcmanfm lxterminal firefox-esr mousepad xarchiver
+
++i3
+
++openbox obmenu cbatticon tint2
+
++transmission-gtk gksu gparted cura obs-studio

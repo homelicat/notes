@@ -1,0 +1,81 @@
+$systemctl start iwd
+$iwctl
+#device list
+#station *** scan
+#station *** get-networks
+#station *** connect SSID
+#sysctl -w net.ipv4.ip_default_ttl=65
+#sysctl —system
+
+$fdisk -l
+$cfdisk /dev/***
+#/dev/1 200MB efi
+#/dev/2 ram swap
+#/dev/3 ostatnio root
+
+$mkfs.fat -F32 /dev/1
+$mkfs.ext4 /dev/3
+$mkswap /dev/2
+$mount /dev/3 /mnt
+$mkdir /mnt/boot
+$mount /dev/1 /mnt/boot
+$swapon /dev/2
+
+$pacstrap -i /mnt base linux linux-firmware sudo nano fish
+$genfstab -U -p /mnt >> /mnt/etc/fstab
+$arch-chroot /mnt /bin/fish
+
+$vim /etc/locale.gen
+#ru_RU.UTF-8
+#pl_PL.UTF-8
+
+$locale-gen
+$echo "LANG=pl_PL.UTF-8" > /etc/locale.conf
+$vim /etc/vconsole.conf
+#KEYMAP=pl
+#FONT=Lat2-Terminus16
+#FONT_MAP=8859-2
+
+$ln -sf /usr/share/zoneinfo/Europe/Warsaw /etc/localtime
+$hwclock --systohc --utc
+
+$echo homelicat-laptop > /etc/hostname
+$vim /etc/hosts
+#127.0.1.1 localhost.localdomain homelicat-laptop
+
+$pacman -S networkmanager
+$systemctl enable NetworkManager 
+
+$passwd
+
+$bootctl --path=/boot install
+$vim /boot/loader/loader.conf
+#default  arch
+#timeout  4
+#editor   0
+
+$blkid -s PARTUUID -o value /dev/3
+$vim /boot/loader/entries/arch.conf
+#title          Arch Linux
+#linux          /vmlinuz-linux
+#initrd         /initramfs-linux.img
+#options        root=PARTUUID=xxx rw
+ 
+$exit
+$umount -R /mnt
+$reboot
+
+$useradd -m -g users -G wheel -s /bin/fish homelicat
+$passwd homelicat
+$EDITOR=nano visudo
+#%wheel ALL=(ALL) ALL
+
++xorg pulseaudio pavucontrol terminus-font lightdm lightdm-gtk-greeter
++nm-applet feh flameshot lxrandr lxappearance
++pcmanfm firefox lxterminal telegram-desktop mousepad xarchiver
+
++i3-gaps
+
++openbox obkey obmenu tint2
+
++udiskie transmission-gtk gksu gparted cura obs-studio
