@@ -1,18 +1,21 @@
 $su
-+sudo git fish
+$apt install sudo git fish
 $/sbin/adduser homelicat sudo
-$exit
-$chsh -s /usr/bin/fish
-$su
-$reboot
+$chsh -s /usr/bin/fish homelicat
+$/sbin/reboot
 
-#/etc/apt/sources.list "deb http://ftp.agh.edu.pl/debian/ buster main"
-+xorg pulseaudio pavucontrol lightdm lightdm-gtk-greeter xfonts-terminus
-+lxrandr lxappearance flameshot network-manager network-manager-gnome feh 
-+pcmanfm lxterminal firefox-esr mousepad xarchiver
+$sudo apt install xserver-xorg pulseaudio pavucontrol lightdm lightdm-gtk-greeter xfonts-terminus gvfs \
+lxrandr lxappearance flameshot network-manager-gnome feh \
+pcmanfm lxterminal firefox-esr mousepad xarchiver gpicview \
+build-essential linux-headers-?
 
-+i3
+$cd rtl8723bu-master/
+$nano Makefile
+$make
+$sudo make install
+$sudo modprobe -v 8723bu
 
-+openbox obmenu cbatticon tint2
 
-+transmission-gtk gksu gparted cura obs-studio
+$sudo apt install i3
+
+$sudo apt install --no-install-recommends lxde-core cbatticon obconf

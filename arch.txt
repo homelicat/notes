@@ -75,7 +75,3 @@ $EDITOR=nano visudo
 +pcmanfm firefox lxterminal telegram-desktop mousepad xarchiver
 
 +i3-gaps
-
-+openbox obkey obmenu tint2
-
-+udiskie transmission-gtk gksu gparted cura obs-studio

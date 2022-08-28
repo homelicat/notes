@@ -2,7 +2,7 @@
 
 main="pcmanfm\nfirefox\napps\nconfig\nsystem"
 
-apps="mousepad\ntelegram\nabiword\nobs\ncura\nflameshot"
+apps="mousepad\ntelegram\ncura\nflameshot"
 
 config="nm-connection-editor\nlxrandr\npavucontrol\nlxappearance"
 
